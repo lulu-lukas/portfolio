@@ -1,302 +1,560 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Lukas Doorleijers — Game Dev Portfolio</title>
-        <meta name="description" content="Portfolio of Lukas Doorleijers — Game developer: projects, skills." />
-        <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Lukas Doorleijers — Game Developer</title>
 
         <style>
-            :root {
-                --bg: #0f1724;
-                --card: #111a2e;
-                --muted: #9aa4b2;
-                --accent: #7c3aed;
-                --glass: rgba(255, 255, 255, 0.04);
-                --radius: 14px;
+
+            :root{
+                --bg:#0f1724;
+                --card:#111a2e;
+                --muted:#9aa4b2;
+                --accent:#7c3aed;
+                --radius:14px;
             }
 
-            * { box-sizing: border-box; scroll-behavior: smooth; }
-            html, body { height: 100%; margin: 0; }
-            body {
-                font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-                line-height: 1.5;
-                background: linear-gradient(180deg, #071025 0%, #0b1220 100%);
-                color: #e6eef6;
+            *{box-sizing:border-box}
+
+            body{
+                margin:0;
+                font-family:system-ui;
+                background:linear-gradient(180deg,#071025,#0b1220);
+                color:white;
             }
 
-            a { color: inherit; text-decoration: none; }
-
-            .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-            header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; }
-            .brand { display: flex; align-items: center; gap: 12px; }
-            .logo {
-                width: 44px;
-                height: 44px;
-                background: linear-gradient(135deg, var(--accent), #3b82f6);
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-weight: 700;
+            .container{
+                max-width:1100px;
+                margin:auto;
+                padding:20px;
             }
 
-            nav ul { display: flex; gap: 12px; list-style: none; padding: 0; margin: 0; }
-            nav a {
-                padding: 8px 12px;
-                border-radius: 8px;
-                color: var(--muted);
-                font-weight: 600;
-                transition: all 0.2s ease;
-            }
-            nav a[aria-current="page"], nav a:hover {
-                background: var(--glass);
-                color: #fff;
+            header{
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-bottom:20px;
             }
 
-            main { display: block; }
-
-            .card {
-                background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
-                border-radius: var(--radius);
-                padding: 24px;
-                box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
-            }
-            .card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 10px 28px rgba(2, 6, 23, 0.8);
+            .logo{
+                background:linear-gradient(135deg,#7c3aed,#3b82f6);
+                width:44px;
+                height:44px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                border-radius:10px;
+                font-weight:700;
             }
 
-            .projects {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                gap: 20px;
-                margin-top: 18px;
-            }
-            .project {
-                display: flex;
-                flex-direction: column;
-                background: var(--card);
-                padding: 14px;
-                border-radius: var(--radius);
-                min-height: 180px;
-                transition: transform 0.2s ease;
-            }
-            .project:hover { transform: scale(1.02); }
-
-            .thumb {
-                height: 140px;
-                border-radius: 10px;
-                overflow: hidden;
-                background: #0a1220;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .thumb img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+            nav ul{
+                display:flex;
+                gap:14px;
+                list-style:none;
+                padding:0;
             }
 
-            .tags {
-                display: flex;
-                gap: 6px;
-                flex-wrap: wrap;
-                margin-top: 6px;
-            }
-            .tag {
-                background: rgba(255, 255, 255, 0.06);
-                padding: 4px 10px;
-                border-radius: 999px;
-                font-size: 12px;
-                color: var(--muted);
-                transition: all 0.2s ease;
-            }
-            .tag:hover { background: var(--accent); color: #fff; }
-
-            button, .btn {
-                cursor: pointer;
-                background: linear-gradient(90deg, var(--accent), #3b82f6);
-                border: none;
-                color: white;
-                font-weight: 700;
-                border-radius: 10px;
-                padding: 10px 18px;
-                transition: all 0.2s ease;
-                display: inline-block;
-            }
-            .btn:hover { opacity: 0.9; }
-
-            footer {
-                padding: 24px 0;
-                color: var(--muted);
-                font-size: 14px;
-                border-top: 1px solid rgba(255, 255, 255, 0.05);
-                margin-top: 40px;
+            nav a{
+                color:var(--muted);
+                font-weight:600;
             }
 
-            @media (max-width: 900px) {
-                nav ul { display: none; }
+            nav a:hover{
+                color:white;
             }
 
-            .muted { color: var(--muted); }
+            .card{
+                background:var(--card);
+                padding:24px;
+                border-radius:var(--radius);
+                margin-bottom:20px;
+            }
+
+            .grid{
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+                gap:20px;
+            }
+
+            .project{
+                background:#0b1424;
+                padding:14px;
+                border-radius:12px;
+                cursor:pointer;
+            }
+
+            .project img{
+                width:100%;
+                border-radius:10px;
+            }
+
+            .tags{
+                margin-top:8px;
+                display:flex;
+                gap:6px;
+                flex-wrap:wrap;
+            }
+
+            .tag{
+                background:#1c2540;
+                padding:4px 10px;
+                border-radius:999px;
+                font-size:12px;
+                color:var(--muted);
+            }
+
+            .btn{
+                background:linear-gradient(90deg,#7c3aed,#3b82f6);
+                padding:10px 16px;
+                border-radius:10px;
+                display:inline-block;
+                margin-top:10px;
+                font-weight:700;
+            }
+
+            video{
+                width:100%;
+                border-radius:10px;
+            }
+
+            pre{
+                background:#060c18;
+                padding:14px;
+                border-radius:10px;
+                overflow:auto;
+            }
+
+            .muted{color:var(--muted)}
+
+            .gallery img{
+                max-width:600px;
+                width:100%;
+                border-radius:10px;
+                margin-bottom:12px;
+            }
+
         </style>
     </head>
 
+
     <body>
+
         <div class="container">
+
             <header>
-                <div class="brand">
-                    <div class="logo" aria-hidden="true">LD</div>
+
+                <div style="display:flex;gap:12px;align-items:center">
+                    <div class="logo">LD</div>
+
                     <div>
                         <div style="font-weight:700">Lukas Doorleijers</div>
                         <div class="muted" style="font-size:12px">Game Developer</div>
                     </div>
+
                 </div>
-                <nav aria-label="Primary">
+
+                <nav>
                     <ul>
-                        <li><a href="#/" data-route="/">Home</a></li>
-                        <li><a href="#/about" data-route="/about">About Me</a></li>
-                        <li><a href="#/projects" data-route="/projects">Projects</a></li>
-                        <li><a href="#/contact" data-route="/contact">Contact</a></li>
+
+                        <li><a href="#/">Home</a></li>
+                        <li><a href="#/projects">Projects</a></li>
+                        <li><a href="#/mechanics">Gameplay Mechanics</a></li>
+                        <li><a href="#/videos">Mini Project Videos</a></li>
+                        <li><a href="#/code">Code Examples</a></li>
+                        <li><a href="#/about">About</a></li>
+
                     </ul>
                 </nav>
+
             </header>
 
-            <main id="main">
-                <div id="page-root"></div>
-            </main>
 
-            <footer>
-                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
-                    <div>© <span id="year">2025</span> Lukas Doorleijers — Game Dev</div>
-                    <div class="muted">Accessible & responsive portfolio</div>
-                </div>
-            </footer>
+            <main id="root"></main>
+
         </div>
 
+
         <script>
+
             const DATA = {
-                meta: {
-                    name: 'Lukas Doorleijers',
-                    email: 'Lukas.Doorleijers@Gmail.com'
+
+                meta:{
+                    name:"Lukas Doorleijers"
                 },
-                projects: [
+
+                projects:[
+
                     {
-                        id: 0,
-                        title: 'Isle of Arcana',
-                        year: 2025,
-                        summary: 'A 2D progressive platformer. Play it here: https://lulu-lukas.itch.io/isle-of-arcana',
-                        tech: ['Unity', 'C#'],
-                        gifs: ['images/0DqgbT.png', 'images/gif 1.gif', 'images/gif 2.gif', 'images/gif 3.gif']
+                        id:0,
+                        title:"Isle of Arcana",
+                        year:2025,
+                        featured:true,
+                        summary:"A progressive 2D platformer where players explore a mysterious island while unlocking abilities.",
+                        tech:["Unity","C#"],
+                        image:"images/0DqgbT.png",
+                        link:"https://lulu-lukas.itch.io/isle-of-arcana",
+                        gifs:[
+                            "images/gif 1.gif",
+                            "images/gif 2.gif",
+                            "images/gif 3.gif"
+                        ]
                     },
+
                     {
-                        id: 1,
-                        title: '3D Shooter Game',
-                        year: 2024,
-                        summary: 'A 3D shooter game with generated levels. https://lulu-lukas.itch.io/3d-shootergame',
-                        tech: ['Unity', 'C#'],
-                        gifs: ['images/img.png', 'images/gif 4.gif', 'images/`gif 5.gif']
+                        id:1,
+                        title:"3D Shooter Game",
+                        year:2024,
+                        summary:"A procedural 3D shooter with generated levels.",
+                        tech:["Unity","C#"],
+                        image:"images/img.png",
+                        link:"https://lulu-lukas.itch.io/3d-shootergame",
+                        gifs:[
+                            "images/gif 4.gif"
+                        ]
+                    },
+
+                    {
+                        id:2,
+                        title:"Horror carnaval Prototype",
+                        year:2026,
+                        summary:"A short horror experience focusing on atmosphere and tension.",
+                        release:"This game isn't out yet and will likely release in summer.",
+                        tech:["Unity","C#"],
+                        image:"images/horror.png",
+                        gifs:[
+                            "images/carnaval.gif"
+                        ]
                     }
+
+                ],
+
+                mechanics:[
+
+                    {
+                        title:"Procedural Level Generation",
+                        desc:"Levels are dynamically generated to create unique playthroughs."
+                    },
+
+                    {
+                        title:"Progressive Ability System",
+                        desc:"Players unlock abilities that expand traversal options."
+                    },
+
+                    {
+                        title:"Enemy AI Behaviour",
+                        desc:"Enemies adapt to the player based on distance and line of sight."
+                    }
+
+                ],
+
+                videos:[
+
+                    {
+                        title:"vr game prototype",
+                        video:"images/Vr Game Showcase Video.mp4",
+                        desc:"a small vr prototype."
+                    },
+
+                    {
+                        title:"horror carnaval prototype",
+                        video:"images/carnaval.mp4",
+                        desc:"sneak peak to my new game."
+                    }
+
+                ],
+
+                code:[
+
+                    {
+                        title:"Player Movement Script",
+                        language:"C#",
+                        code:`public class PlayerMovement : MonoBehaviour
+{
+public float speed = 5f;
+
+void Update()
+{
+float h = Input.GetAxis("Horizontal");
+float v = Input.GetAxis("Vertical");
+
+Vector3 move = new Vector3(h,0,v);
+transform.Translate(move * speed * Time.deltaTime);
+}
+}`
+                    }
+
                 ]
+
             };
 
-            function navigate() {
-                const hash = location.hash.replace(/^#/, '') || '/';
-                const [_, route, id] = hash.split('/');
-                document.querySelectorAll('nav a').forEach(a => {
-                    a.removeAttribute('aria-current');
-                    if (a.getAttribute('href') === '#' + hash) a.setAttribute('aria-current', 'page');
-                });
-                if (route === '' || route === '/') renderHome();
-                else if (route === 'about') renderAbout();
-                else if (route === 'projects' && id) renderProjectDetail(Number(id));
-                else if (route === 'projects') renderProjects();
-                else if (route === 'contact') renderContact();
-                else renderNotFound();
+
+            function router(){
+
+                const hash = location.hash.replace("#","") || "/";
+
+                const parts = hash.split("/");
+
+                if(hash=="/") home();
+                else if(hash=="/projects") projects();
+                else if(parts[1]=="project") projectDetail(parts[2]);
+                else if(hash=="/mechanics") mechanics();
+                else if(hash=="/videos") videos();
+                else if(hash=="/code") code();
+                else if(hash=="/about") about();
+
             }
 
-            window.addEventListener('hashchange', navigate);
-            window.addEventListener('load', () => {
-                document.getElementById('year').textContent = new Date().getFullYear();
-                navigate();
-            });
+            window.addEventListener("hashchange",router);
+            window.addEventListener("load",router);
 
-            const root = document.getElementById('page-root');
-            function clear() { root.innerHTML = ''; }
+            const root=document.getElementById("root");
 
-            function renderHome() {
-                clear();
-                root.innerHTML = `
-          <section class="card">
-            <h1>Hi — I'm ${DATA.meta.name}</h1>
-            <p class="muted">Welcome to my portfolio! Explore my game projects or learn more about me.</p>
-          </section>`;
+
+            function home(){
+
+                root.innerHTML=`
+
+<section class="card">
+
+<h1>Game Developer Portfolio</h1>
+
+<p class="muted">
+I create immersive gameplay experiences in Unity and Unreal Engine.
+</p>
+
+</section>
+
+
+<section class="card">
+
+<h2>Featured Project</h2>
+
+${DATA.projects.filter(p=>p.featured).map(p=>`
+
+<div class="project" onclick="location.href='#/project/${p.id}'">
+
+<img src="${p.image}">
+
+<h3>${p.title}</h3>
+
+<p class="muted">${p.summary}</p>
+
+</div>
+
+`).join("")}
+
+</section>
+
+
+<section class="card">
+
+<h2>Sneak Peaks</h2>
+
+<div class="grid">
+
+${DATA.projects.slice(0,3).map(p=>`
+
+<div class="project" onclick="location.href='#/project/${p.id}'">
+
+<img src="${p.image}">
+
+<h3>${p.title}</h3>
+
+<p class="muted">${p.summary}</p>
+
+</div>
+
+`).join("")}
+
+</div>
+
+</section>
+
+`;
+
             }
 
-            function renderAbout() {
-                clear();
-                root.innerHTML = `
-          <section class="card">
-            <h2>About Me</h2>
-            <p>
-            Hello! I'm ${DATA.meta.name}, a game developer studying at SintLucas with about a year of experience creating games in Unity and Unreal Engine.
-            I mainly work in Unity using C#, and I love building eighter story-driven games with progressive gameplay elements or games with horror elements to them.
-            What motivates me most is crafting experiences that draw players in — whether that’s through atmosphere, storytelling, or gameplay that evolves over time.
-            My goal is to keep growing as an indie developer and continue making games that people can truly enjoy and remember.
-            </p>
 
-            <img src="images/img_1.png" alt="Photo of ${DATA.meta.name}" style="max-width:240px;border-radius:12px;margin-top:10px" />
-          </section>`;
+
+            function projects(){
+
+                root.innerHTML=`
+
+<h1>Projects</h1>
+
+<div class="grid">
+
+${DATA.projects.map(p=>`
+
+<div class="project" onclick="location.href='#/project/${p.id}'">
+
+<img src="${p.image}">
+
+<h3>${p.title} (${p.year})</h3>
+
+<p class="muted">${p.summary}</p>
+
+<div class="tags">
+
+${p.tech.map(t=>`<span class="tag">${t}</span>`).join("")}
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
             }
 
-            function renderProjects() {
-                clear();
-                let html = `<h2>Projects</h2><div class="projects">`;
-                DATA.projects.forEach(p => {
-                    html += `
-            <article class="project">
-              <div class="thumb"><img src="${p.gifs[0]}" alt="Screenshot of ${p.title}" /></div>
-              <h3>${p.title} — ${p.year}</h3>
-              <p class="muted">${p.summary}</p>
-              <div class="tags">${p.tech.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-              <a href="#/projects/${p.id}" class="btn" style="margin-top:10px">View Details</a>
-            </article>`;
-                });
-                html += `</div>`;
-                root.innerHTML = html;
+
+
+            function projectDetail(id){
+
+                const p=DATA.projects.find(x=>x.id==id)
+
+                root.innerHTML=`
+
+<a href="#/projects" class="tag">← Back to projects</a>
+
+<h1>${p.title}</h1>
+
+<p class="muted">${p.summary}</p>
+
+${p.release?`<p class="muted">${p.release}</p>`:""}
+
+<div class="tags">
+${p.tech.map(t=>`<span class="tag">${t}</span>`).join("")}
+</div>
+
+<br>
+
+${p.link?`<a class="btn" href="${p.link}" target="_blank">Play on Itch.io</a>`:""}
+
+<br><br>
+
+<div class="gallery">
+
+${p.gifs?p.gifs.map(g=>`<img src="${g}">`).join(""):""}
+
+</div>
+
+`;
+
             }
 
-            function renderProjectDetail(id) {
-                clear();
-                const p = DATA.projects.find(x => x.id === id);
-                if (!p) return renderNotFound();
-                root.innerHTML = `
-          <a href="#/projects" class="tag">← Back to projects</a>
-          <h2>${p.title} — ${p.year}</h2>
-          <div style="display:flex;flex-direction:column;gap:10px;margin:12px 0;">
-            ${p.gifs.map(g => `<img src="${g}" alt="${p.title} preview" style="max-width:600px;border-radius:12px"/>`).join('')}
-          </div>
-          <p class="muted">${p.summary}</p>
-          <div class="tags">${p.tech.map(t => `<span class="tag">${t}</span>`).join('')}</div>`;
+
+
+            function mechanics(){
+
+                root.innerHTML=`
+
+<h1>Gameplay Mechanics</h1>
+
+<div class="grid">
+
+${DATA.mechanics.map(m=>`
+
+<div class="card">
+
+<h3>${m.title}</h3>
+
+<p class="muted">${m.desc}</p>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
             }
 
-            function renderContact() {
-                clear();
-                root.innerHTML = `
-          <h2>Contact</h2>
-          <p class="muted">Want to reach out? Click below to email me directly.</p>
-          <a href="mailto:${DATA.meta.email}" class="btn">Contact Me</a>`;
+
+
+            function videos(){
+
+                root.innerHTML=`
+
+<h1>Mini Project Videos</h1>
+
+<div class="grid">
+
+${DATA.videos.map(v=>`
+
+<div class="project">
+
+<h3>${v.title}</h3>
+
+<video controls src="${v.video}"></video>
+
+<p class="muted">${v.desc}</p>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
             }
 
-            function renderNotFound() {
-                clear();
-                root.innerHTML = `<h2>Page not found</h2><p class="muted">Try Home or Projects.</p>`;
+
+
+            function code(){
+
+                root.innerHTML=`
+
+<h1>Code Examples</h1>
+
+${DATA.code.map(c=>`
+
+<div class="card">
+
+<h3>${c.title}</h3>
+
+<pre>${c.code}</pre>
+
+</div>
+
+`).join("")}
+
+`;
+
             }
+
+
+
+            function about(){
+
+                root.innerHTML=`
+
+<div class="card">
+
+<h1>About Me</h1>
+
+<p class="muted">
+
+Hello! I'm Lukas Doorleijers, a game developer studying at SintLucas.
+
+I mainly work with Unity and C#. My focus is on atmospheric gameplay,
+progression systems, and horror experiences.
+
+</p>
+
+</div>
+
+`;
+
+            }
+
         </script>
+
     </body>
 </html>
