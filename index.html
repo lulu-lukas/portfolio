@@ -267,20 +267,112 @@
                 code:[
 
                     {
-                        title:"Player Movement Script",
+                        title:"Target script",
                         language:"C#",
                         code:`public class TTTTarget : MonoBehaviour
 {
-public float speed = 5f;
+    public AudioSource audioSource;
+    public List<AudioClip> hitSounds;
+    public AudioClip deathSound;
+    public spawnPoint spawnPoint;
+    public Score ScoreManager;
+    public waveManager waveManager;
+    public List<BodyPart> HitArea;
+    public int Health;
+    public int damageModifier = 1;
+    public int scoreValue = 100;
 
-void Update()
-{
-float h = Input.GetAxis("Horizontal");
-float v = Input.GetAxis("Vertical");
+    public int minTime = 10;
+    public int maxTime = 15;
+    private bool isDead = false;
 
-Vector3 move = new Vector3(h,0,v);
-transform.Translate(move * speed * Time.deltaTime);
-}
+    public Animator animator;
+
+    [Serializable]
+    public class BodyPart
+    {
+        public Collider collider;
+        public int damageModifier;
+        public string triggerName;
+    }
+    
+    void Start()
+    {
+        StartCoroutine(standUp());
+    }
+
+    [Obsolete]
+    private void Awake()
+    {
+        waveManager = FindObjectOfType<waveManager>();
+        ScoreManager = FindObjectOfType<Score>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    IEnumerator standUp()
+    {
+        yield return new WaitForSeconds(5f);
+        animator.SetTrigger("standUp");
+        animator.SetBool("IsStanding", true);
+        StartCoroutine(waitTillRetract());
+    }
+
+    IEnumerator waitTillRetract()
+    {
+        yield return new WaitForSeconds(UnityEngine.Random.Range(minTime, maxTime));
+        animator.SetTrigger("retract");
+    }
+
+    public void hit(int hitDamage, Collider hitCollider)
+    {
+        if (isDead) return;
+        var damage = hitDamage;
+        if (hitSounds.Count > 0)
+        {
+            var randomIndex = UnityEngine.Random.Range(0, hitSounds.Count);
+            audioSource.PlayOneShot(hitSounds[randomIndex]);
+        }
+
+        foreach (BodyPart bodyPart in HitArea)
+        {
+            if (bodyPart.collider == hitCollider)
+            {
+                damage *= bodyPart.damageModifier;
+                animator.SetTrigger(bodyPart.triggerName);
+                break;
+            }
+        }
+
+        Debug.Log("Damage Dealt: " + damage);
+
+        Health = Math.Max(0, Health - damage);
+        Debug.Log("Health: " + Health);
+
+        if (Health <= 0)
+        {
+            if (!isDead)
+            {
+                audioSource.PlayOneShot(deathSound);
+                Debug.Log("Target Destroyed");
+                isDead = true;
+                ScoreManager.AddScore(scoreValue);
+                ScoreManager.AddKill();
+                animator.SetTrigger("defeat");
+            }
+        }
+    }
+    public void DestroyTarget()
+    {
+        spawnPoint.isOccupied = false;
+        waveManager.EnemyDied();
+        Destroy(gameObject);
+    }
+
 }`
                     }
 
