@@ -216,14 +216,19 @@
 
                     {
                         id:2,
-                        title:"Horror carnaval Prototype",
+                        title:"Just Another Thirstday",
                         year:2026,
-                        summary:"A short horror experience focusing on atmosphere and tension.",
-                        release:"This game isn't out yet and will likely release in summer.",
+                        summary:"A horror experience focusing on story atmosphere and tension. the game takes lace in " +
+                            "a apocalyptic world that has been destroyed by a mysterieus phenomenon that made humans " +
+                            "bloodthirsty and target other humans. you play as a boy named eden and his companion pip" +
+                            " who is hit little brother, they wander the destroyed city in search for their parents and " +
+                            "other survivors",
+                        release:"This game isn't out yet and a demo will likely release in in between july and december. " +
+                            "screenshots will be added when the game is further done.",
                         tech:["Unity","C#"],
-                        image:"images/horror.png",
+                        image:"none",
                         gifs:[
-                            "images/carnaval.gif"
+                            "images/gameplayConcept.gif"
                         ]
                     }
 
@@ -232,18 +237,18 @@
                 mechanics:[
 
                     {
-                        title:"Procedural Level Generation",
-                        desc:"Levels are dynamically generated to create unique playthroughs."
+                        title:"platformer player movement",
+                        desc:"player can walk, sprint and climb on objects as well as push objects to traverse the world."
                     },
 
                     {
                         title:"Progressive Ability System",
-                        desc:"Players unlock abilities that expand traversal options."
+                        desc:"Players unlock abilities that expand combat and traversal options."
                     },
 
                     {
                         title:"Enemy AI Behaviour",
-                        desc:"Enemies adapt to the player based on distance and line of sight."
+                        desc:"Enemies adapt to the player based on what abilities they unlocked."
                     }
 
                 ],
@@ -295,7 +300,7 @@
         public int damageModifier;
         public string triggerName;
     }
-    
+
     void Start()
     {
         StartCoroutine(standUp());
